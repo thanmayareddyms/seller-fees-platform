@@ -1,11 +1,9 @@
 {
   "name": "geo-audit-live-dashboard",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "scripts": {
-    "build": "npm run build:backend && npm run build:frontend",
-    "build:backend": "tsc -p backend/tsconfig.json",
-    "build:frontend": "tsc -p frontend/tsconfig.json",
+    "build": "tsc -p backend/tsconfig.json",
     "start": "node backend/dist/server.js"
   },
   "devDependencies": {
