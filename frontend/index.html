@@ -1,34 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Audit Metric</title><link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Audit Metric</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <aside>
-    <div class="brand"><div class="mark">A</div><div><strong>Audit Metric</strong><small>Geo Editor operations</small></div></div>
-    <nav><button class="active" data-view="overview">Overview</button><button data-view="auditors">Auditors</button><button data-view="quality">Quality</button><button data-view="reverts">Reverts</button></nav>
-    <div class="connection"><span></span><div><b>Geo Editor</b><small id="connectionText">Integration pending</small></div></div>
+    <div class="brand"><div class="mark">A</div><strong>Audit Metric</strong></div>
+    <nav>
+      <button class="active" data-view="overview">Overview</button>
+      <button data-view="auditors">Auditors</button>
+      <button data-view="quality">Quality</button>
+      <button data-view="reverts">Reverts</button>
+    </nav>
   </aside>
+
   <main>
-    <header><div><div class="eyebrow">OPERATIONS</div><h1>Audit performance</h1><p>Track Geo Editor work as it happens.</p></div><div class="live"><i></i><b>LIVE</b><small id="updated">Connecting…</small></div></header>
-    <div class="toolbar"><div class="period"><button class="selected" data-period="today">Today</button><button data-period="week">7 days</button><button data-period="month">Month</button></div><select id="auditorFilter"><option value="all">All auditors</option></select></div>
+    <header>
+      <div>
+        <h1>Audit Metric</h1>
+        <p>Geo Editor audit performance</p>
+      </div>
+      <span id="updated">Connecting…</span>
+    </header>
+
+    <div class="toolbar">
+      <div class="period">
+        <button class="selected" data-period="today">Today</button>
+        <button data-period="week">7 days</button>
+        <button data-period="month">Month</button>
+      </div>
+      <select id="auditorFilter"><option value="all">All auditors</option></select>
+    </div>
 
     <section id="overview" class="view active">
       <div class="metrics">
-        <article><span>Completed</span><strong id="completed">0</strong><small>Audit cases</small></article>
-        <article><span>In progress</span><strong id="inProgress">0</strong><small>Live from Geo Editor</small></article>
-        <article><span>Expired</span><strong id="expired">0</strong><small>Cases</small></article>
-        <article><span>Reverts</span><strong id="reverted">0</strong><small>Grouped by audit date</small></article>
-        <article><span>Audit time</span><strong id="auditTime">0m</strong><small>Total tracked time</small></article>
-        <article><span>Quality</span><strong id="quality">—</strong><small>Available quality data</small></article>
+        <article><span>Completed</span><strong id="completed">0</strong></article>
+        <article><span>Expired</span><strong id="expired">0</strong></article>
+        <article><span>Reverts</span><strong id="reverted">0</strong></article>
+        <article><span>Audit time</span><strong id="auditTime">0m</strong></article>
+        <article><span>Quality</span><strong id="quality">—</strong></article>
       </div>
-      <div class="panel"><div class="panelTitle"><div><h2>Auditor performance</h2><p>Current period</p></div></div><div class="tableWrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>In progress</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead><tbody id="auditorsTable"></tbody></table></div></div>
+
+      <div class="panel">
+        <div class="panelTitle"><h2>Auditor performance</h2><p>Selected period</p></div>
+        <div class="tableWrap">
+          <table>
+            <thead><tr><th>Auditor</th><th>Completed</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead>
+            <tbody id="auditorsTable"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
 
-    <section id="auditors" class="view"><div class="panel"><div class="panelTitle"><div><h2>Auditors</h2><p>Productivity by auditor</p></div></div><div class="tableWrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>In progress</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead><tbody id="auditorsTable2"></tbody></table></div></div></section>
-    <section id="quality" class="view"><div class="empty"><b>Quality analytics ready</b><span>Connect the quality dataset later to populate daily, weekly and monthly quality trends.</span></div></section>
-    <section id="reverts" class="view"><div class="empty"><b>Revert analytics ready</b><span>Connect the delayed revert dump later. Reverts will be attributed to the original audit date.</span></div></section>
-    <footer>Dashboard foundation · Real-time source: Geo Editor · Historical sources: Revert and Quality datasets</footer>
-  </main><script type="module" src="/app.js"></script>
-</body></html>
+    <section id="auditors" class="view">
+      <div class="panel"><div class="panelTitle"><h2>Auditor performance</h2><p>Selected period</p></div><div class="tableWrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead><tbody id="auditorsTable2"></tbody></table></div></div>
+    </section>
+
+    <section id="quality" class="view">
+      <div class="panel simple"><h2>Quality</h2><p>Daily, weekly and monthly quality will appear here when the quality dataset is connected.</p></div>
+    </section>
+
+    <section id="reverts" class="view">
+      <div class="panel simple"><h2>Reverts</h2><p>Delayed reverts will be attributed to the original audit date.</p></div>
+    </section>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
