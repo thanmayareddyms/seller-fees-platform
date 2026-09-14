@@ -1,1 +1,34 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Geo Audit Live</title><link rel="stylesheet" href="/styles.css"></head><body><aside><div class="brand"><span class="logo">G</span><div><b>Geo Audit</b><small>Live Operations</small></div></div><nav><a class="active">Overview</a><a>Auditors</a><a>Quality</a><a>Reverts</a><a>Data</a></nav><div class="side-note"><span class="dot"></span> Live tracking enabled</div></aside><main><header><div><p class="eyebrow">OPERATIONS DASHBOARD</p><h1>Audit control center</h1><p class="muted">Real-time productivity and quality across today's Geo Editor work.</p></div><div class="header-right"><span class="live"><i></i> LIVE</span><span id="updated">Updating…</span></div></header><section class="filters"><button class="selected">Today</button><button>This week</button><button>This month</button><select><option>All auditors</option><option>Tanmaya</option><option>Ananya</option><option>Rahul</option><option>Priya</option></select></section><section class="cards"><article><span>Completed tasks</span><strong id="completed">—</strong><em>Today</em></article><article class="accent"><span>Currently in progress</span><strong id="active">—</strong><em>Live from Geo Editor</em></article><article><span>Expired tasks</span><strong id="expired">—</strong><em>Today</em></article><article><span>Revert cases</span><strong id="reverted">—</strong><em>Today</em></article><article><span>Total audit time</span><strong id="time">—</strong><em>Across auditors</em></article><article><span>Quality</span><strong id="quality">—</strong><em>Average score</em></article></section><section class="grid"><article class="panel"><div class="panel-head"><div><h2>Auditor performance</h2><p>Live productivity snapshot</p></div><button>View details →</button></div><div class="table-wrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>Active</th><th>Reverts</th><th>Quality</th><th>Audit time</th></tr></thead><tbody id="auditors"></tbody></table></div></article><article class="panel"><div class="panel-head"><div><h2>Quality trend</h2><p>Daily → weekly → monthly</p></div></div><div class="chart"><div class="bars"><i style="height:62%"></i><i style="height:74%"></i><i style="height:68%"></i><i style="height:81%"></i><i style="height:76%"></i><i style="height:89%"></i><i style="height:84%"></i></div><div class="labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div><div class="trend"><b>98.4%</b><span>+1.8% vs previous week</span></div></article></section><section class="panel bottom"><div class="panel-head"><div><h2>Revert cases</h2><p>Cases requiring correction, grouped by audit date</p></div><span class="pill">Today</span></div><div class="revert-row"><div><b>Mon</b><span>2 cases</span></div><div><b>Tue</b><span>1 case</span></div><div><b>Wed</b><span>3 cases</span></div><div><b>Thu</b><span>0 cases</span></div><div><b>Fri</b><span>2 cases</span></div><div><b>Sat</b><span id="todayReverts">—</span></div></div></section><footer>Data source: approved Geo Editor integration · Dashboard refreshes automatically</footer></main><script type="module" src="/app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Audit Metric</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <aside>
+    <div class="brand"><div class="mark">A</div><div><strong>Audit Metric</strong><small>Geo Editor operations</small></div></div>
+    <nav><button class="active" data-view="overview">Overview</button><button data-view="auditors">Auditors</button><button data-view="quality">Quality</button><button data-view="reverts">Reverts</button></nav>
+    <div class="connection"><span></span><div><b>Geo Editor</b><small id="connectionText">Integration pending</small></div></div>
+  </aside>
+  <main>
+    <header><div><div class="eyebrow">OPERATIONS</div><h1>Audit performance</h1><p>Track Geo Editor work as it happens.</p></div><div class="live"><i></i><b>LIVE</b><small id="updated">Connecting…</small></div></header>
+    <div class="toolbar"><div class="period"><button class="selected" data-period="today">Today</button><button data-period="week">7 days</button><button data-period="month">Month</button></div><select id="auditorFilter"><option value="all">All auditors</option></select></div>
+
+    <section id="overview" class="view active">
+      <div class="metrics">
+        <article><span>Completed</span><strong id="completed">0</strong><small>Audit cases</small></article>
+        <article><span>In progress</span><strong id="inProgress">0</strong><small>Live from Geo Editor</small></article>
+        <article><span>Expired</span><strong id="expired">0</strong><small>Cases</small></article>
+        <article><span>Reverts</span><strong id="reverted">0</strong><small>Grouped by audit date</small></article>
+        <article><span>Audit time</span><strong id="auditTime">0m</strong><small>Total tracked time</small></article>
+        <article><span>Quality</span><strong id="quality">—</strong><small>Available quality data</small></article>
+      </div>
+      <div class="panel"><div class="panelTitle"><div><h2>Auditor performance</h2><p>Current period</p></div></div><div class="tableWrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>In progress</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead><tbody id="auditorsTable"></tbody></table></div></div>
+    </section>
+
+    <section id="auditors" class="view"><div class="panel"><div class="panelTitle"><div><h2>Auditors</h2><p>Productivity by auditor</p></div></div><div class="tableWrap"><table><thead><tr><th>Auditor</th><th>Completed</th><th>In progress</th><th>Expired</th><th>Reverts</th><th>Audit time</th><th>Quality</th></tr></thead><tbody id="auditorsTable2"></tbody></table></div></div></section>
+    <section id="quality" class="view"><div class="empty"><b>Quality analytics ready</b><span>Connect the quality dataset later to populate daily, weekly and monthly quality trends.</span></div></section>
+    <section id="reverts" class="view"><div class="empty"><b>Revert analytics ready</b><span>Connect the delayed revert dump later. Reverts will be attributed to the original audit date.</span></div></section>
+    <footer>Dashboard foundation · Real-time source: Geo Editor · Historical sources: Revert and Quality datasets</footer>
+  </main><script type="module" src="/app.js"></script>
+</body></html>
